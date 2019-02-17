@@ -19,18 +19,18 @@ class App extends React.Component {
   };
 
   setClick = id => {
-    const { clickedID, score, topScore, friends } = this.state
-    if (!clickedID.includes(id)) {
+    const { clickedId, score, topScore, friends } = this.state
+    if (!clickedId.includes(id)) {
       let shuffledFriends = this.shuffle(friends);
       this.setState(prevState => ({
         friends: shuffledFriends,
         score: score + 1,
-        clickedID: [...prevState.clickedID, id]
+        clickedId: [...prevState.clickedId, id]
       }))
       //else statement
-    } else if (clickedID.includes(id)) {
+    } else if (clickedId.includes(id)) {
       let shuffledFriends = this.shuffle(friends);
-      this.setState({ friends: shuffledFriends, clickedID: [], score: 0, topScore: score > topScore ? score : topScore })
+      this.setState({ friends: shuffledFriends, clickedId: [], score: 0, topScore: score > topScore ? score : topScore })
     }
   }
   render() {
@@ -80,7 +80,7 @@ class App extends React.Component {
   }
   
   shuffle=(a)=> {
-    for (let i = friends.length - 1; i > 0; i--) {
+    for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [a[i], a[j]] = [a[j], a[i]];
     }
